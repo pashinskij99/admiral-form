@@ -1,0 +1,1 @@
+export const adminUserIdFake = 'e6b9f8ad-bf97-459c-ac5b-9c962fec759c'
