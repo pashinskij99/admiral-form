@@ -23,7 +23,7 @@ const AuthGuard = props => {
             query: { returnUrl: router.asPath }
           })
         } else {
-          router.replace('/login')
+          // router.replace('/login')
         }
       }
     },
