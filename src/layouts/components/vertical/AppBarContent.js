@@ -18,6 +18,7 @@ import { useAuth, useAuthSuperToken } from 'src/hooks/useAuth'
 import Button from "@mui/material/Button";
 import Link from 'next/link'
 import { redirectToAuth } from 'supertokens-auth-react'
+import { useRouter } from 'next/router'
 
 const notifications = [
   {
@@ -121,9 +122,16 @@ const AppBarContent = props => {
 
   // ** Hook
   const auth = useAuthSuperToken()
+  const { push } = useRouter()
 
   async function onLogin (show) {
-    redirectToAuth({show});
+    push('/auth', {
+      query: {
+        show
+      }
+    })
+
+    // redirectToAuth({show});
   }
 
   return (
