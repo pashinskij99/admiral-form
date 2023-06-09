@@ -124,18 +124,18 @@ const AppBarContent = props => {
   const auth = useAuthSuperToken()
   const { push } = useRouter()
 
-  function onLogin (show) {
-    push('/auth')
+  // function onLogin (show) {
+  //   push('/auth')
 
-    // push({
-    //   pathname: '/auth',
-    //   query: {
-    //     "show": show
-    //   }
-    // })
+  //   // push({
+  //   //   pathname: '/auth',
+  //   //   query: {
+  //   //     "show": show
+  //   //   }
+  //   // })
 
-    // redirectToAuth({show});
-  }
+  //   // redirectToAuth({show});
+  // }
 
   return (
     <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -160,11 +160,18 @@ const AppBarContent = props => {
           </>
         ) : (
           <Box display={'flex'} alignItems={'center'} gap={3}>
-            <Button onClick={() => onLogin('signin')}>
-              Login
-            </Button>
+            <Link href={'/auth'}>
+              <Button >
+                Login
+              </Button>
+            </Link>
 
-            <Button variant='contained' onClick={() => onLogin('signup')}>
+
+            <Button
+              variant='contained'
+
+              // onClick={() => onLogin('signup')}
+            >
               Sign Up
             </Button>
 
