@@ -190,7 +190,7 @@ export default function Auth() {
   )
 }
 
-// Auth.getLayout = page => <BlankLayout>{page}</BlankLayout>
+Auth.getLayout = page => <BlankLayout>{page}</BlankLayout>
 
 
 

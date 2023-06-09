@@ -8,9 +8,8 @@ export const backendConfig = () => {
     framework: "express",
     supertokens: {
       // https://try.supertokens.com is for demo purposes. Replace this with the address of your core instance (sign up on supertokens.com), or self host a core.
-      connectionURI: "https://try.supertokens.com",
-
-      // apiKey: <API_KEY(if configured)>,
+      connectionURI: "https://dev-73b693d106d511eeb3bcc970e6370175-us-east-1.aws.supertokens.io:3569",
+      apiKey: 'KCufc48dVPq2goJbjxOWFqBWkkNy1c',
     },
     appInfo,
     recipeList: [
