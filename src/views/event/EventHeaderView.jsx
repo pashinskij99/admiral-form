@@ -44,7 +44,6 @@ const EventHeaderView = ({eventData, eventId, inputRequired}) => {
         sx={{
           pt: 5,
           mt: 0,
-
         }}
       >
         <Box
@@ -82,13 +81,19 @@ const EventHeaderView = ({eventData, eventId, inputRequired}) => {
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', '& svg': { mr: 1.5, color: 'text.secondary' } }}>
                   <Icon fontSize='1.25rem' icon='tabler:calendar' />
-                  <Typography sx={{ color: 'text.secondary' }}>Start {formatDate(new Date(eventData.eventStart))}</Typography>
+                  <Typography sx={{ color: 'text.secondary' }}>
+                    {formatDate(new Date(eventData.eventStart))}
+                    {' '}
+                    -
+                    {' '}
+                    {formatDate(new Date(eventData.eventEnd))}
+                    </Typography>
                 </Box>
               </Box>
             </Box>
 
             <Button onClick={handleOpen} variant='contained' sx={{ '& svg': { mr: 2 } }}>
-              <Icon icon='tabler:check' fontSize='1.125rem' />
+              {/* <Icon icon='tabler:check' fontSize='1.125rem' /> */}
               Sign In
             </Button>
 
@@ -103,7 +108,7 @@ const EventHeaderView = ({eventData, eventId, inputRequired}) => {
 
         </Box>
 
-        <Box sx={{ mb: 6, mt: 6 }}>
+        <Box sx={{ mb: 3, mt: 7 }}>
           <Typography ml={'0.5rem'} sx={{ color: 'text.secondary' }}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias architecto consequatur, facere facilis hic mollitia voluptas? Aliquam, architecto ea, eos facere fuga maiores maxime minima natus perferendis porro quo voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid architecto atque blanditiis culpa, cupiditate dolores ducimus esse excepturi facere harum, id, laudantium libero minima odit omnis saepe sapiente voluptatibus?
           </Typography>
@@ -124,7 +129,7 @@ const SignInModal = ({open, handleClose, eventId, inputRequired}) => {
 
     >
       <Box sx={{':focus-visible': {outline: 'none'}, maxWidth: '600px', p: {xs:5, md: 0} }}>
-        <EventFormView eventId={eventId} inputRequired={inputRequired} />
+        <EventFormView eventId={eventId} inputRequired={inputRequired} handleClose={handleClose} />
       </Box>
     </Modal>
   )

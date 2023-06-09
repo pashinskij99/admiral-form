@@ -30,7 +30,7 @@ const renderList = arr => {
               {`${item.property.charAt(0).toUpperCase() + item.property.slice(1)}:`}
             </Typography>
             <Typography sx={{ color: 'text.secondary' }}>
-              {item.value.charAt(0).toUpperCase() + item.value.slice(1)}
+              {item.value}
             </Typography>
           </Box>
         </Box>
@@ -75,16 +75,13 @@ const AboutOverviewView = props => {
 
   return (
     <Grid container spacing={6}>
+      <Grid item xs={12} md={8}>
+        <ActivityTimelineView/>
+      </Grid>
+
       <Grid item xs={16} md={4}>
         <Card >
           <CardContent>
-
-            {/* <Box sx={{ mb: 6 }} >
-              <Typography variant='body2' sx={{ mb: 4, color: 'text.disabled', textTransform: 'uppercase' }}>
-                About
-              </Typography>
-              {renderList(about)}
-            </Box> */}
 
             <Box sx={{ mb: 6 }}>
               <Typography variant='body2' sx={{ mb: 4, color: 'text.disabled', textTransform: 'uppercase' }}>
@@ -103,9 +100,7 @@ const AboutOverviewView = props => {
           </CardContent>
         </Card>
       </Grid>
-      <Grid item xs={12} md={8}>
-        <ActivityTimelineView/>
-      </Grid>
+
     </Grid>
   )
 }

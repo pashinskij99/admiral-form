@@ -19,6 +19,7 @@ import { Button, Checkbox, Dialog, DialogContent, DialogTitle, FormControlLabel,
 import CustomTextField from 'src/@core/components/mui/text-field'
 import Link from 'next/link'
 import Tooltip from '@mui/material/Tooltip'
+import styled from '@emotion/styled'
 
 const escapeRegExp = value => {
   return value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
@@ -109,6 +110,13 @@ const getRows = (defaultData = [], filteredData = [], searchText, {type = 'defau
   }
 }
 
+const StyledDataGrid = styled(DataGrid)`
+  select {
+    display: none;
+  }
+
+`
+
 const EventListView = ({ data = { data: [] }, paginationModel, handleChangePage, isFetching, removeEvent }) => {
   // ** States
   const [searchText, setSearchText] = useState('')
@@ -184,10 +192,10 @@ const EventListView = ({ data = { data: [] }, paginationModel, handleChangePage,
     <Card
       sx={{
         padding: 0,
-        pt: 2
+        pt: 2,
       }}
     >
-      <DataGrid
+      <StyledDataGrid
         loading={isFetching}
         autoHeight
         paginationMode={'server'}
@@ -203,8 +211,10 @@ const EventListView = ({ data = { data: [] }, paginationModel, handleChangePage,
         sx={{
           '& .MuiSvgIcon-root': {
             fontSize: '1.125rem'
-          }
+          },
+
         }}
+
         slotProps={{
           baseButton: {
             size: 'medium',
@@ -213,7 +223,8 @@ const EventListView = ({ data = { data: [] }, paginationModel, handleChangePage,
           toolbar: {
             value: searchText,
             clearSearch: () => handleSearch(''),
-            onChange: event => handleSearch(event.target.value)
+            onChange: event => handleSearch(event.target.value),
+
           }
         }}
       />
