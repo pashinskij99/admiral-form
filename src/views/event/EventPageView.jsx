@@ -48,8 +48,8 @@ const EventPageView = ({
             overview={data.overview}
           />
         </Grid>
-        <Grid item xs={12}>
-          <Grid container spacing={6}>
+        {/* <Grid item xs={12}>
+          <Grid container spacing={6}> */}
 
             {/*<Grid item xs={12} md={5}>*/}
             {/*  <EventFormView*/}
@@ -62,8 +62,8 @@ const EventPageView = ({
             {/*  <ActivityTimelineView/>*/}
             {/*</Grid>*/}
 
-          </Grid>
-        </Grid>
+          {/* </Grid>
+        </Grid> */}
       </Grid>
     </div>
   );

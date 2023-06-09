@@ -79,12 +79,12 @@ const AboutOverviewView = props => {
         <Card >
           <CardContent>
 
-            <Box sx={{ mb: 6 }} >
+            {/* <Box sx={{ mb: 6 }} >
               <Typography variant='body2' sx={{ mb: 4, color: 'text.disabled', textTransform: 'uppercase' }}>
                 About
               </Typography>
               {renderList(about)}
-            </Box>
+            </Box> */}
 
             <Box sx={{ mb: 6 }}>
               <Typography variant='body2' sx={{ mb: 4, color: 'text.disabled', textTransform: 'uppercase' }}>

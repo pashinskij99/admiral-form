@@ -53,6 +53,7 @@ import '../../styles/globals.css'
 import SuperTokensReact, { SuperTokensWrapper } from 'supertokens-auth-react'
 import { frontendConfig } from "../config/frontendConfig";
 import { AuthProviderSuperToken } from 'src/context/AuthContextSuperToken'
+import { appInfo } from 'src/config/appInfo'
 
 const clientSideEmotionCache = createEmotionCache()
 
@@ -99,6 +100,10 @@ const App = props => {
   const authGuard = Component.authGuard ?? true
   const guestGuard = Component.guestGuard ?? false
   const aclAbilities = Component.acl ?? defaultACLObj
+
+  console.log({
+    appInfo
+  });
 
   return (
     <Provider store={store}>
