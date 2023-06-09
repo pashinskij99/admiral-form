@@ -14,11 +14,11 @@ import themeConfig from 'src/configs/themeConfig'
 
 // ** Components
 import AppBar from './components/vertical/appBar'
-import Customizer from 'src/@core/components/customizer'
 import Navigation from './components/vertical/navigation'
 import Footer from './components/shared-components/footer'
 import ScrollToTop from 'src/@core/components/scroll-to-top'
 import { useAuthSuperToken } from 'src/hooks/useAuth'
+import {useSelector} from "react-redux";
 
 const VerticalLayoutWrapper = styled('div')({
   height: '100%',
@@ -63,13 +63,44 @@ const VerticalLayout = props => {
 
   const auth = useAuthSuperToken()
 
+  const {appBarShow} = useSelector(state => state.appBar)
+
+  if(!appBarShow) {
+    return (
+      <>
+        <VerticalLayoutWrapper className='layout-wrapper'>
+          <MainContentWrapper
+            className='layout-content-wrapper'
+            sx={{ ...(contentHeightFixed && { maxHeight: '100vh' }) }}
+          >
+            <ContentWrapper
+              className='layout-page-content'
+              sx={{
+                ...(contentHeightFixed && {
+                  overflow: 'hidden',
+                  '& > :first-of-type': { height: '100%' }
+                }),
+                ...(contentWidth === 'boxed' && {
+                  mx: 'auto',
+                  '@media (min-width:1440px)': { maxWidth: 1440 },
+                  '@media (min-width:1200px)': { maxWidth: '100%' }
+                })
+              }}
+            >
+              {children}
+            </ContentWrapper>
+          </MainContentWrapper>
+        </VerticalLayoutWrapper>
+      </>
+    )
+  }
+
   return (
     <>
       <VerticalLayoutWrapper className='layout-wrapper'>
         {/* Navigation Menu */}
-        {console.log(auth.user)}
         {
-          navHidden && !(navHidden && settings.lastLayout === 'horizontal') ? null : auth.user && (
+          navHidden && !(navHidden && settings.lastLayout === 'horizontal') ? null : (auth.user) && (
             <Navigation
               navWidth={navWidth}
               navVisible={navVisible}

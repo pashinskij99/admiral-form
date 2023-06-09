@@ -5,6 +5,8 @@ import axios from 'axios'
 import UserProfile from 'src/views/pages/user-profile/UserProfile'
 
 const UserProfileTab = ({ tab, data }) => {
+  console.log({data})
+
   return <UserProfile tab={tab} data={data} />
 }
 

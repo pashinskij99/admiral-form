@@ -50,6 +50,7 @@ const EventLinkPage = ({ userId }) => {
     const newEvent = localStorage.getItem('newEvent')
 
     const createNewEvent = async () => {
+      setLoading(true)
       await instanceAxios.post(`/users/${userId}/events`,
         JSON.parse(newEvent)
       )
@@ -69,6 +70,7 @@ const EventLinkPage = ({ userId }) => {
           toast.success('Form Created')
           console.log(res)
           setCreatedEventId(res.data.id)
+          localStorage.setItem('lastEventId', res.data.id)
         }).finally(() => {
           localStorage.removeItem('newEvent')
           setLoading(false)
@@ -80,7 +82,7 @@ const EventLinkPage = ({ userId }) => {
     }
   }, [userId])
 
-  const linkInputValue = `${process.env.WEBSITE_DOMAIN}/event/${createdEventId}`
+  const linkInputValue = `${process.env.WEBSITE_DOMAIN}/event/${createdEventId || localStorage.getItem('lastEventId')}`
 
   const handleOpenStatistics = () => {
     push(`/event/statistics/${createdEventId}`)

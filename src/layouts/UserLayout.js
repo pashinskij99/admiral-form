@@ -18,6 +18,8 @@ import HorizontalAppBarContent from './components/horizontal/AppBarContent'
 
 // ** Hook Import
 import { useSettings } from 'src/@core/hooks/useSettings'
+import {styled} from "@mui/material/styles";
+import Box from "@mui/material/Box";
 
 const UserLayout = ({ children, contentHeightFixed }) => {
   // ** Hooks
