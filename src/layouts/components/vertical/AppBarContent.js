@@ -125,9 +125,10 @@ const AppBarContent = props => {
   const { push } = useRouter()
 
   async function onLogin (show) {
-    push('/auth', {
+    push({
+      pathname: '/auth',
       query: {
-        show
+        "show": show
       }
     })
 
