@@ -82,7 +82,7 @@ const EventLinkPage = ({ userId }) => {
     }
   }, [userId])
 
-  const linkInputValue = `${process.env.WEBSITE_DOMAIN}/event/${createdEventId || localStorage.getItem('lastEventId')}`
+  const linkInputValue = `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/event/${createdEventId || localStorage.getItem('lastEventId')}`
 
   const handleOpenStatistics = () => {
     push(`/event/statistics/${createdEventId}`)

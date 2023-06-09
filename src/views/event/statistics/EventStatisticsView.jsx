@@ -32,7 +32,7 @@ const StatisticsForm = ({eventData}) => {
   const {name, eventStart, id} = eventData
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(`${process.env.WEBSITE_DOMAIN}/event/${id}`)
+    navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/event/${id}`)
       .then(() => {
         toast.success('The link is copied', {
           position: 'bottom-right'
@@ -105,10 +105,10 @@ const StatisticsForm = ({eventData}) => {
               <Box position='relative'>
                 <CustomTextField
                   fullWidth
-                  value={`${process.env.WEBSITE_DOMAIN}/event/${id}`}
+                  value={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/event/${id}`}
                 />
                 <Link
-                  href={`${process.env.WEBSITE_DOMAIN}/event/${id}`}
+                  href={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/event/${id}`}
                   target='_blank'
                 >
                   <Tooltip title="Event Page" placement="top">

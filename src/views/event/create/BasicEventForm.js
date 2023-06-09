@@ -112,7 +112,7 @@ const BasicEventForm = ({ userId }) => {
     steps
   })
 
-  const linkInputValue = `${process.env.WEBSITE_DOMAIN}/event/${createdEventId}`
+  const linkInputValue = `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/event/${createdEventId}`
 
   const handleCopy = () => {
     navigator.clipboard
