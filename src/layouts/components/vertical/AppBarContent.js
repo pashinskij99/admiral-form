@@ -127,14 +127,14 @@ const AppBarContent = props => {
   function onLogin (show) {
     // push('/auth')
 
-    // push({
-    //   pathname: '/auth',
-    //   query: {
-    //     "show": show
-    //   }
-    // })
+    push({
+      pathname: '/auth',
+      query: {
+        "show": show
+      }
+    })
 
-    redirectToAuth({show});
+    // redirectToAuth({show});
   }
 
   return (
