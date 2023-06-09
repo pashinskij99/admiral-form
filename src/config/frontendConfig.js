@@ -173,7 +173,6 @@ export const frontendConfig = () => {
           setHref: (href) => {
             Router.push(href)
           },
-
         },
       }
     },
