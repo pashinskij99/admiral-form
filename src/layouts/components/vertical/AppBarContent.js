@@ -124,13 +124,15 @@ const AppBarContent = props => {
   const auth = useAuthSuperToken()
   const { push } = useRouter()
 
-  async function onLogin (show) {
-    push({
-      pathname: '/auth',
-      query: {
-        "show": show
-      }
-    })
+  function onLogin (show) {
+    push('/auth')
+
+    // push({
+    //   pathname: '/auth',
+    //   query: {
+    //     "show": show
+    //   }
+    // })
 
     // redirectToAuth({show});
   }
