@@ -1,9 +1,10 @@
 import { instanceAxios } from "src/config/instanceAxios"
 import { inputsRequiredMockArray } from "src/views/event/inputRequiredMock"
 import EventPageView from "../../views/event/EventPageView";
-import {useEffect, useLayoutEffect} from "react";
-import {useDispatch} from "react-redux";
-import {setAppBarState} from "../../store/apps/appBar";
+import { useLayoutEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setAppBarState } from "../../store/apps/appBar";
+import { SessionAuth } from "supertokens-auth-react/recipe/session";
 
 export const getServerSideProps = async (ctx) => {
   const { id } = ctx.query
@@ -18,8 +19,8 @@ export const getServerSideProps = async (ctx) => {
 
       for (let j = 0; j < inputsRequiredMockArray.length; j++) {
         const mockElement = inputsRequiredMockArray[j];
-        if(typeof socialFromBackEnd[1] === 'boolean' && socialFromBackEnd[1]) {
-          if(socialFromBackEnd[0] === mockElement['dataBaseName']) {
+        if (typeof socialFromBackEnd[1] === 'boolean' && socialFromBackEnd[1]) {
+          if (socialFromBackEnd[0] === mockElement['dataBaseName']) {
             resultRequiredInput.push(mockElement)
           }
         }

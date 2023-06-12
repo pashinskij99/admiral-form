@@ -1,22 +1,21 @@
 // ** React Imports
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 // ** MUI Components
 import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
 import Button from '@mui/material/Button'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
 
 // ** Third Party Imports
-import axios from 'axios'
 
 // ** Icon Imports
+import { Modal } from "@mui/material"
 import Icon from 'src/@core/components/icon'
-import {formatDate} from "../../@core/utils/formatDate";
-import {Modal} from "@mui/material";
-import EventFormView from "./EventFormView";
+import { formatDate } from "../../@core/utils/formatDate"
+import EventFormView from "./EventFormView"
 
 const EventHeaderView = ({eventData, eventId, inputRequired}) => {
   // ** State

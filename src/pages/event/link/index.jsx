@@ -11,6 +11,7 @@ import { adminUserIdFake } from "src/config/adminUserIdFake"
 // import supertokensNode from 'supertokens-node'
 // import { backendConfig } from "src/config/backendConfig"
 import { instanceAxios } from "src/config/instanceAxios"
+import { SessionAuth } from "supertokens-auth-react/recipe/session"
 
 export const getServerSideProps = async (ctx) => {
   // supertokensNode.init(backendConfig())
@@ -77,7 +78,7 @@ const EventLinkPage = ({ userId }) => {
         })
     }
 
-    if(newEvent) {
+    if (newEvent) {
       createNewEvent()
     }
   }, [userId])
@@ -108,61 +109,61 @@ const EventLinkPage = ({ userId }) => {
   }
 
   return (
-    <Box display={'flex'} alignItems={'center'} height={'100%'}>
-      <Card style={{ height: 'auto', width: '100%' }}>
-        <CardContent>
-          <Fragment>
-            <Typography>
-              All steps are completed!
-              <br />
-              We have generated a link to your event that you can share.
-            </Typography>
+    <SessionAuth>
+      <Box display={'flex'} alignItems={'center'} height={'100%'}>
+        <Card style={{ height: 'auto', width: '100%' }}>
+          <CardContent>
+            <Fragment>
+              <Typography>
+                All steps are completed!
+                <br />
+                We have generated a link to your event that you can share.
+              </Typography>
 
-            {loading
-              ? <LinearProgress sx={{ mt: 4 }} />
-              : (
-                <Box
-                  sx={{ mt: 4 }}
-                  position={'relative'}
-                >
-                  <StyledInputLink
-                    fullWidth
-                    value={linkInputValue}
-                    disabled
-                  />
-                  <Tooltip title="Statistics" placement="top">
-                    <StyledIconButton
-                      onClick={handleOpenStatistics}
-                      sx={{ position: 'absolute', right: 35, top: 0, color: 'rgba(47, 43, 61, 0.7)' }}
-                    >
-                      <Icon icon='majesticons:open' />
-                    </StyledIconButton>
-                  </Tooltip>
+              {loading
+                ? <LinearProgress sx={{ mt: 4 }} />
+                : (
+                  <Box
+                    sx={{ mt: 4 }}
+                    position={'relative'}
+                  >
+                    <StyledInputLink
+                      fullWidth
+                      value={linkInputValue}
+                      disabled
+                    />
+                    <Tooltip title="Statistics" placement="top">
+                      <StyledIconButton
+                        onClick={handleOpenStatistics}
+                        sx={{ position: 'absolute', right: 35, top: 0, color: 'rgba(47, 43, 61, 0.7)' }}
+                      >
+                        <Icon icon='majesticons:open' />
+                      </StyledIconButton>
+                    </Tooltip>
 
-                  <Tooltip title="Copy" placement="top">
-                    <StyledIconButton
-                      onClick={handleCopy}
-                      sx={{ position: 'absolute', right: 2, top: 0, color: 'rgba(47, 43, 61, 0.7)' }}
-                    >
-                      <Icon icon='octicon:copy-16' />
-                    </StyledIconButton>
-                  </Tooltip>
-
-
-                </Box>)
-            }
-
-            <Box sx={{ mt: 4, display: 'flex', justifyContent: 'flex-end', gap: 3 }}>
-              <Button variant='contained' onClick={handleNext}>
-                Next
-              </Button>
-            </Box>
-          </Fragment>
-        </CardContent>
-      </Card>
-    </Box>
+                    <Tooltip title="Copy" placement="top">
+                      <StyledIconButton
+                        onClick={handleCopy}
+                        sx={{ position: 'absolute', right: 2, top: 0, color: 'rgba(47, 43, 61, 0.7)' }}
+                      >
+                        <Icon icon='octicon:copy-16' />
+                      </StyledIconButton>
+                    </Tooltip>
 
 
+                  </Box>)
+              }
+
+              <Box sx={{ mt: 4, display: 'flex', justifyContent: 'flex-end', gap: 3 }}>
+                <Button variant='contained' onClick={handleNext}>
+                  Next
+                </Button>
+              </Box>
+            </Fragment>
+          </CardContent>
+        </Card>
+      </Box>
+    </SessionAuth>
   )
 }
 

@@ -1,33 +1,25 @@
-import Profile from "../pages/user-profile/profile";
 import Grid from "@mui/material/Grid";
-import AboutOverivew from "../pages/user-profile/profile/AboutOverivew";
-import ActivityTimeline from "../pages/user-profile/profile/ActivityTimeline";
-import ConnectionsTeams from "../pages/user-profile/profile/ConnectionsTeams";
-import ProjectsTable from "../pages/user-profile/profile/ProjectsTable";
-import UserProfileHeader from "../pages/user-profile/UserProfileHeader";
-import EventHeaderView from "./EventHeaderView";
 import AboutOverviewView from "./AboutOverviewView";
-import EventFormView from "./EventFormView";
-import ActivityTimelineView from "./ActivityTimelineView";
+import EventHeaderView from "./EventHeaderView";
 
 const EventPageView = ({
-                         eventId,
-                         inputRequired,
-                         eventData
-                       }) => {
+  eventId,
+  inputRequired,
+  eventData
+}) => {
   const data = {
     about: [
-      {property: 'Name', value: eventData.name,},
-      {property: 'Status', value: 'active',},
-      {property: 'Country', value: 'Ukraine',},
+      { property: 'Name', value: eventData.name, },
+      { property: 'Status', value: 'active', },
+      { property: 'Country', value: 'Ukraine', },
     ],
     contacts: [
-      {property: 'Contact', value: '(123) 456-7890',},
-      {property: 'Email', value: 'admiral.doe@example.com'},
+      { property: 'Contact', value: '(123) 456-7890', },
+      { property: 'Email', value: 'admiral.doe@example.com' },
     ],
     overview: [
-      {property: 'Limit of members', value: eventData.limitMembers || '100',},
-      {property: 'Entered', value: '32',},
+      { property: 'Limit of members', value: eventData.limitMembers || '100', },
+      { property: 'Entered', value: '32', },
     ]
   }
 

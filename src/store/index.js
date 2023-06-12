@@ -10,6 +10,7 @@ import calendar from 'src/store/apps/calendar'
 import permissions from 'src/store/apps/permissions'
 import appBarSliceReducer from 'src/store/apps/appBar'
 import {eventsListRTKApi} from "./apps/eventsListRTK";
+import profileTab from "./apps/profileTab"
 
 export const store = configureStore({
   reducer: {
@@ -19,6 +20,7 @@ export const store = configureStore({
     invoice,
     calendar,
     permissions,
+    profileTab,
     appBar: appBarSliceReducer,
     [eventsListRTKApi.reducerPath]: eventsListRTKApi.reducer
   },

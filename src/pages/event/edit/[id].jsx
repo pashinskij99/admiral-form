@@ -12,7 +12,8 @@ import PageHeader from 'src/@core/components/page-header'
 // ** Styled Component
 import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker'
 import EditEventForm from 'src/views/event/edit/EditEventForm'
-import {instanceAxios} from "../../../config/instanceAxios";
+import { instanceAxios } from "../../../config/instanceAxios";
+import { SessionAuth } from 'supertokens-auth-react/recipe/session'
 
 const LinkStyled = styled(Link)(({ theme }) => ({
   textDecoration: 'none',
@@ -22,7 +23,7 @@ const LinkStyled = styled(Link)(({ theme }) => ({
 export const getServerSideProps = async (ctx) => {
   const { id } = ctx.query
   const response = await instanceAxios.get(`/events/${id}`)
-  const {data} = await response
+  const { data } = await response
 
   return {
     props: {
@@ -31,29 +32,32 @@ export const getServerSideProps = async (ctx) => {
   }
 }
 
-const EventForm = ({currentFormInfo}) => {
+const EventForm = ({ currentFormInfo }) => {
   return (
-    <DatePickerWrapper>
-      <Grid container spacing={6} className='match-height'>
-        <PageHeader
-          title={
-            <Typography variant='h4'>
-              <LinkStyled href='https://github.com/react-hook-form/react-hook-form' target='_blank'>
-                Edit Event
-              </LinkStyled>
-            </Typography>
-          }
-          subtitle={
-            <Typography sx={{ color: 'text.secondary' }}>
-              Fill in the required fields to create an event
-            </Typography>
-          }
-        />
-        <Grid item xs={12}>
-          <EditEventForm currentFormInfo={currentFormInfo} />
+    <SessionAuth>
+      <DatePickerWrapper>
+        <Grid container spacing={6} className='match-height'>
+          <PageHeader
+            title={
+              <Typography variant='h4'>
+                <LinkStyled href='https://github.com/react-hook-form/react-hook-form' target='_blank'>
+                  Edit Event
+                </LinkStyled>
+              </Typography>
+            }
+            subtitle={
+              <Typography sx={{ color: 'text.secondary' }}>
+                Fill in the required fields to create an event
+              </Typography>
+            }
+          />
+          <Grid item xs={12}>
+            <EditEventForm currentFormInfo={currentFormInfo} />
+          </Grid>
         </Grid>
-      </Grid>
-    </DatePickerWrapper>
+      </DatePickerWrapper>
+    </SessionAuth>
+
   )
 }
 

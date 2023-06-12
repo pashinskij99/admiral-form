@@ -4,6 +4,7 @@ import {TableUsers} from "../../../views/event/statistics/TableUsers";
 import Box from "@mui/material/Box";
 import {useGetEventMembersListQuery} from "../../../store/apps/eventsListRTK";
 import {useState} from "react";
+import { SessionAuth } from "supertokens-auth-react/recipe/session";
 
 export const getServerSideProps = async (ctx) => {
   const {id} = ctx.query
@@ -29,16 +30,20 @@ const StatisticsEventPage = ({eventData, eventId}) => {
     setPaginationModel({page: paginationOptions.page, pageSize: 10})
   }
 
-  return (<Box display={'flex'} flexDirection={'column'} gap={10}>
-    <StatisticsForm eventData={eventData}/>
+  return (
+    <SessionAuth>
+      <Box display={'flex'} flexDirection={'column'} gap={10}>
+        <StatisticsForm eventData={eventData}/>
 
-    <TableUsers
-      membersData={membersData}
-      handleChangePage={handleChangePage}
-      paginationModel={paginationModel}
-      isFetching={isFetching}
-    />
-  </Box>);
+        <TableUsers
+          membersData={membersData}
+          handleChangePage={handleChangePage}
+          paginationModel={paginationModel}
+          isFetching={isFetching}
+        />
+      </Box>
+    </SessionAuth>
+  );
 };
 
 export default StatisticsEventPage;
