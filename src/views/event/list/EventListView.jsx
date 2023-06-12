@@ -81,19 +81,20 @@ const defaultColumns = [
       </Typography>
     )
   },
-  {
-    flex: 0.1,
-    type: 'date',
-    field: 'eventEndSignIn',
-    minWidth: 100,
-    headerName: 'Finish sign',
-    valueGetter: params => new Date(params.value),
-    renderCell: params => (
-      <Typography variant='body2' sx={{ color: 'text.primary' }}>
-        {formatDate(new Date(params.row.eventEndSignIn))}
-      </Typography>
-    )
-  }
+
+  // {
+  //   flex: 0.1,
+  //   type: 'date',
+  //   field: 'eventEndSignIn',
+  //   minWidth: 100,
+  //   headerName: 'Finish sign',
+  //   valueGetter: params => new Date(params.value),
+  //   renderCell: params => (
+  //     <Typography variant='body2' sx={{ color: 'text.primary' }}>
+  //       {formatDate(new Date(params.row.eventEndSignIn))}
+  //     </Typography>
+  //   )
+  // }
 ]
 
 const getRows = (defaultData = [], filteredData = [], searchText, {type = 'default'}) => {
@@ -210,7 +211,7 @@ const EventListView = ({ data = { data: [] }, paginationModel, handleChangePage,
         pageSizeOptions={[10]}
         sx={{
           '& .MuiSvgIcon-root': {
-            fontSize: '1.125rem'
+            fontSize: '1.125rem',
           },
 
         }}
@@ -224,7 +225,6 @@ const EventListView = ({ data = { data: [] }, paginationModel, handleChangePage,
             value: searchText,
             clearSearch: () => handleSearch(''),
             onChange: event => handleSearch(event.target.value),
-
           }
         }}
       />

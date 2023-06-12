@@ -12,14 +12,23 @@ export const getServerSideProps = async (ctx) => {
   const response = await instanceAxios.get(`/events/${id}`)
   const {data} = await response
 
+  const requiredInputs = []
+  if(data) {
+    Object
+      .entries(data)
+      .forEach(([key, value]) => (value && typeof value === 'boolean') && requiredInputs.push([key, value]))
+  }
+
   return {
     props: {
-      eventData: data, eventId: id
+      eventData: data,
+      eventId: id,
+      requiredInputs
     }
   }
 }
 
-const StatisticsEventPage = ({eventData, eventId}) => {
+const StatisticsEventPage = ({eventData, eventId, requiredInputs}) => {
   const [paginationModel, setPaginationModel] = useState({page: 0, pageSize: 10})
 
   const {data: membersData, isFetching} = useGetEventMembersListQuery({
@@ -40,6 +49,7 @@ const StatisticsEventPage = ({eventData, eventId}) => {
           handleChangePage={handleChangePage}
           paginationModel={paginationModel}
           isFetching={isFetching}
+          requiredInputs={requiredInputs}
         />
       </Box>
     </SessionAuth>
