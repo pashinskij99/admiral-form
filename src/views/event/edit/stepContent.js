@@ -37,7 +37,7 @@ export const getStepContent = ({
   switch (step) {
     case 0:
       return (
-        <form key={0} onSubmit={handleGeneralSubmit(onSubmit)}>
+        <form autoComplete='off' key={0} onSubmit={handleGeneralSubmit(onSubmit)}>
           <Grid container spacing={5}>
             <Grid item xs={12}>
               <Typography variant='body2' sx={{ fontWeight: 600, color: 'text.primary' }}>
@@ -110,21 +110,15 @@ export const getStepContent = ({
                 name='eventEndSignIn'
                 control={generalControl}
                 render={({ field: { value, onChange } }) => (
-
-                  <>
-                    {console.log(value)}
-
-                    <DatePicker
-                      selected={value}
-                      showYearDropdown
-                      showMonthDropdown
-                      selectsEnd
-                      onChange={e => onChange(e)}
-                      placeholderText={tomorrowDate}
-                      customInput={<CustomInput value={value} onChange={onChange} label='Close Sign In*' />}
-                    />
-                  </>
-
+                  <DatePicker
+                    selected={value}
+                    showYearDropdown
+                    showMonthDropdown
+                    selectsEnd
+                    onChange={e => onChange(e)}
+                    placeholderText={tomorrowDate}
+                    customInput={<CustomInput value={value} onChange={onChange} label='Close Sign In*' />}
+                  />
                 )}
               />
             </Grid>
@@ -150,7 +144,7 @@ export const getStepContent = ({
             </Grid>
 
             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Button variant='tonal' color='secondary' disabled>
+              <Button variant='outlined' disabled>
                 Back
               </Button>
               <Button type='submit' variant='contained'>
@@ -162,7 +156,7 @@ export const getStepContent = ({
       )
     case 1:
       return (
-        <form key={1} onSubmit={handleSpecificSubmit(onSubmit)}>
+        <form autoComplete='off' key={1} onSubmit={handleSpecificSubmit(onSubmit)}>
           <Grid container spacing={5}>
             <Grid item xs={12}>
               <Typography variant='body2' sx={{ fontWeight: 600, color: 'text.primary' }}>
@@ -259,7 +253,7 @@ export const getStepContent = ({
             </Grid>
 
             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Button variant='tonal' color='secondary' onClick={handleBack}>
+              <Button variant='outlined' onClick={handleBack}>
                 Back
               </Button>
               <Button type='submit' variant='contained'>
@@ -271,7 +265,7 @@ export const getStepContent = ({
       )
     case 2:
       return (
-        <form key={2} onSubmit={handleSocialSubmit(onSubmit)}>
+        <form autoComplete='off' key={2} onSubmit={handleSocialSubmit(onSubmit)}>
           <Grid container spacing={5}>
             <Grid item xs={12}>
               <Typography variant='body2' sx={{ fontWeight: 600, color: 'text.primary' }}>
@@ -361,7 +355,7 @@ export const getStepContent = ({
             </Grid>
 
             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Button variant='tonal' color='secondary' onClick={handleBack}>
+              <Button variant='outlined' onClick={handleBack}>
                 Back
               </Button>
               <Button type='submit' variant='contained'>

@@ -158,7 +158,9 @@ const BasicEventForm = ({ userId }) => {
         if (auth.user) {
           return (
             <Fragment>
-              <Typography>
+              <Typography sx={{
+                textAlign: {xs: 'center', sm: 'start'}
+              }}>
                 All steps are completed!
                 <br />
                 We have generated a link to your event that you can share.
@@ -167,10 +169,10 @@ const BasicEventForm = ({ userId }) => {
               {loading ? (
                 <LinearProgress sx={{ mt: 4 }} />
               ) : (
-                <Box sx={{ mt: 4 }} position={'relative'}>
+                <Box sx={{ mt: 4, position: 'relative' }}>
                   <StyledInputLink fullWidth value={linkInputValue} disabled />
-                  <Link href={`/event/statistics/${createdEventId}`} target='_blank'>
-                    <Tooltip title='Statistics' placement='top'>
+                  <Link target='_blank' href={`/event/${createdEventId}`}>
+                    <Tooltip title='Event' placement='top'>
                       <StyledIconButton
                         sx={{ position: 'absolute', right: 35, top: 0, color: 'rgba(47, 43, 61, 0.7)' }}
                       >
@@ -200,13 +202,15 @@ const BasicEventForm = ({ userId }) => {
         } else {
           return (
             <Fragment>
-              <Typography>
+              <Typography sx={{
+                textAlign: {xs: 'center', sm: 'start'}
+              }}>
                 All steps are completed!
                 <br />
                 Next, you need to log in or register
               </Typography>
 
-              <Box sx={{ mt: 4, display: 'flex', justifyContent: 'flex-end', gap: 3 }}>
+              <Box sx={{ mt: 4, display: 'flex', justifyContent: {xs: 'space-between', sm: 'flex-end'}, gap: 3 }}>
                 <Button variant='contained' onClick={() => handleRedirectToSign('signin')}>
                   Login
                 </Button>
@@ -272,6 +276,9 @@ const BasicEventForm = ({ userId }) => {
 const StyledInputLink = styled(CustomTextField)`
   input:disabled {
     -webkit-text-fill-color: rgba(47, 43, 61, 0.7);
+  }
+  input {
+    padding: 7.5px 75px 7.5px 13px !important;
   }
 `
 

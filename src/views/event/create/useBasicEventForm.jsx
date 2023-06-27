@@ -53,7 +53,6 @@ export const useBasicEventForm = ({
             .post(`/users/${userId}/events`, finalData)
             .then(res => {
               toast.success('Form Submitted')
-              console.log({ res })
               setCreatedEventId(res?.data?.id)
               setResponseError('')
             })

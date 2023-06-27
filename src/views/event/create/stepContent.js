@@ -36,7 +36,7 @@ export const getStepContent = ({
   switch (step) {
     case 0:
       return (
-        <form key={0} onSubmit={handleGeneralSubmit(onSubmit)}>
+        <form autoComplete='off' key={0} onSubmit={handleGeneralSubmit(onSubmit)}>
           <Grid container spacing={5}>
             <Grid item xs={12}>
               <Typography variant='body2' sx={{ fontWeight: 600, color: 'text.primary' }}>
@@ -47,7 +47,7 @@ export const getStepContent = ({
               </Typography>
             </Grid>
 
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12} sm={6}>
               <Controller
                 name='name'
                 control={generalControl}
@@ -59,6 +59,26 @@ export const getStepContent = ({
                     label='Event Name*'
                     onChange={onChange}
                     placeholder='Event name'
+                    error={Boolean(generalErrors.name)}
+                    aria-describedby='validation-basic-first-name'
+                    {...(generalErrors.name && { helperText: 'This field is required' })}
+                  />
+                )}
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <Controller
+                name='location'
+                control={generalControl}
+                rules={{ required: true }}
+                render={({ field: { value, onChange } }) => (
+                  <CustomTextField
+                    fullWidth
+                    value={value}
+                    label='Location*'
+                    onChange={onChange}
+                    placeholder='Kyiv, Ukraine'
                     error={Boolean(generalErrors.name)}
                     aria-describedby='validation-basic-first-name'
                     {...(generalErrors.name && { helperText: 'This field is required' })}
@@ -89,17 +109,26 @@ export const getStepContent = ({
               />
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} sx={{
+              '.react-datepicker .react-datepicker__day.react-datepicker__day--disabled:not(.react-datepicker__day--selected)': {
+                color: 'rgba(47, 43, 61, 0.42)!important'
+              },
+              '.react-datepicker__day.react-datepicker__day--outside-month': {
+                color: 'rgba(47, 43, 61, 0.72)!important'
+              }
+            }}>
               <Controller
                 name='rangeDate'
                 control={generalControl}
                 rules={{ required: true }}
+
                 render={({ field: { value, onChange } }) => (
                   <DatePicker
                     selectsRange={true}
                     selected={startDate}
                     showYearDropdown
                     showMonthDropdown
+                    minDate={new Date()}
                     startDate={startDate}
                     endDate={endDate}
                     onChange={e => {
@@ -120,7 +149,14 @@ export const getStepContent = ({
               />
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} sx={{
+              '.react-datepicker .react-datepicker__day.react-datepicker__day--disabled:not(.react-datepicker__day--selected)': {
+                color: 'rgba(47, 43, 61, 0.42)!important'
+              },
+              '.react-datepicker__day.react-datepicker__day--outside-month': {
+                color: 'rgba(47, 43, 61, 0.72)!important'
+              }
+            }}>
               <Controller
                 name='eventEndSignIn'
                 control={generalControl}
@@ -130,6 +166,7 @@ export const getStepContent = ({
                     showYearDropdown
                     showMonthDropdown
                     selectsEnd
+                    minDate={new Date()}
                     onChange={e => onChange(e)}
                     placeholderText={tomorrowDate}
                     customInput={
@@ -182,7 +219,7 @@ export const getStepContent = ({
             </Grid>
 
             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Button variant='tonal' color='secondary' disabled>
+              <Button variant='outlined' disabled>
                 Back
               </Button>
               <Button type='submit' variant='contained'>
@@ -194,7 +231,7 @@ export const getStepContent = ({
       )
     case 1:
       return (
-        <form key={1} onSubmit={handleSpecificSubmit(onSubmit)}>
+        <form autoComplete='off' key={1} onSubmit={handleSpecificSubmit(onSubmit)}>
           <Grid container spacing={5}>
             <Grid item xs={12}>
               <Typography variant='body2' sx={{ fontWeight: 600, color: 'text.primary' }}>
@@ -295,7 +332,7 @@ export const getStepContent = ({
             </Grid>
 
             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Button variant='tonal' color='secondary' onClick={handleBack}>
+              <Button variant='outlined' onClick={handleBack}>
                 Back
               </Button>
               <Button type='submit' variant='contained'>
@@ -307,7 +344,7 @@ export const getStepContent = ({
       )
     case 2:
       return (
-        <form key={2} onSubmit={handleSocialSubmit(onSubmit)}>
+        <form autoComplete='off' key={2} onSubmit={handleSocialSubmit(onSubmit)}>
           <Grid container spacing={5}>
             <Grid item xs={12}>
               <Typography variant='body2' sx={{ fontWeight: 600, color: 'text.primary' }}>
@@ -399,7 +436,7 @@ export const getStepContent = ({
             </Grid>
 
             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Button variant='tonal' color='secondary' onClick={handleBack}>
+              <Button variant='outlined' onClick={handleBack}>
                 Back
               </Button>
               <Button type='submit' variant='contained'>
@@ -415,5 +452,12 @@ export const getStepContent = ({
 }
 
 const CustomInput = forwardRef(({ ...props }, ref) => {
-  return <CustomTextField fullWidth inputRef={ref} {...props} sx={{ width: '100%' }} />
+  return (
+    <CustomTextField
+      fullWidth
+      inputRef={ref}
+      {...props}
+      sx={{ width: '100%' }}
+    />
+  )
 })

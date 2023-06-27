@@ -1,6 +1,16 @@
 const navigation = () => {
   return [
     {
+      title: 'Event List',
+      icon: 'tabler:text-wrap-disabled',
+      path: '/event/list'
+    },
+  ]
+}
+
+const navigation1 = () => {
+  return [
+    {
       title: 'Dashboards',
       icon: 'tabler:smart-home',
       badgeContent: 'new',

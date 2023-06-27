@@ -84,7 +84,8 @@ const ProfileView = ({ tab }) => {
   const tabContentList = {
     account: <TabAccountView />,
     change_password: <TabSecureView />,
-    payment: <TabPaymentView />,
+
+    // payment: <TabPaymentView />,
   }
 
   return (
@@ -126,7 +127,7 @@ const ProfileView = ({ tab }) => {
                     </Box>
                   }
                 />
-                <Tab
+                {/* <Tab
                   value='payment'
                   label={
                     <Box sx={{ display: 'flex', alignItems: 'center', ...(!hideText && { '& svg': { mr: 2 } }) }}>
@@ -134,7 +135,7 @@ const ProfileView = ({ tab }) => {
                       {!hideText && 'Payment'}
                     </Box>
                   }
-                />
+                /> */}
               </TabList>
             </Grid>
             <Grid item xs={12}>

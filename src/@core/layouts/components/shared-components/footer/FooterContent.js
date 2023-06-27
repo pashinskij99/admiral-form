@@ -26,8 +26,16 @@ const FooterContent = () => {
   const hidden = useMediaQuery(theme => theme.breakpoints.down('md'))
 
   return (
-    <Box sx={{ display: 'flex',  flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
-      <Typography sx={{ mr: 2, display: 'flex', color: 'text.secondary' }}>
+    <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
+      <Typography
+        sx={{
+          mr: 2,
+          color: 'text.secondary',
+          display: 'flex',
+          flexWrap: { xs: 'wrap', sm: 'nowrap' },
+          justifyContent: { xs: 'center', sm: 'flex-start' }
+        }}
+      >
         {/*{`© ${new Date().getFullYear()}, Made with `}*/}
         {/*<Box component='span' sx={{ mx: 1, color: 'error.main' }}>*/}
         {/*  ❤️*/}

@@ -5,16 +5,16 @@ export const useEventList = (userId) => {
   const [eventList, setEventList] = useState([])
   const [isLoading, setIsLoading] = useState(false)
 
-  useEffect(async () => {
-    try {
-      const resultEventsFetch = await fetchEvents(userId, 1, 10)
+  // useEffect(async () => {
+  //   try {
+  //     const resultEventsFetch = await fetchEvents(userId, 1, 10)
 
-      console.log(resultEventsFetch)
+  //     // console.log(resultEventsFetch)
 
-    } catch (e) {
+  //   } catch (e) {
 
-    }
-  }, [])
+  //   }
+  // }, [])
 
 }
 

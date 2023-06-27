@@ -10,7 +10,8 @@ export const getStaticPaths = () => {
     paths: [
       { params: { tab: 'account' } },
       { params: { tab: 'change_password' } },
-      { params: { tab: 'payment' } },
+
+      // { params: { tab: 'payment' } },
     ],
     fallback: false
   }

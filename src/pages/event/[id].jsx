@@ -27,8 +27,6 @@ export const getServerSideProps = async (ctx) => {
       }
     }
 
-    console.log(data);
-
     return {
       props: {
         eventId: id,

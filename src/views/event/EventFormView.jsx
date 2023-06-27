@@ -36,7 +36,6 @@ const EventFormView = ({eventId, inputRequired, handleClose}) => {
 
     instanceAxios.post(`/events/${eventId}/members`, data)
       .then((res) => {
-        console.log(res)
         toast.success('Form Submitted')
       })
       .catch((error) => {

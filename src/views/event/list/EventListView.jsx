@@ -163,6 +163,16 @@ const EventListView = ({ data = { data: [] }, paginationModel, handleChangePage,
       headerName: 'Actions',
       renderCell: ({ row }) => (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Tooltip title='Event' placement='top'>
+            <Link target='_blank' href={`/event/${row.id}`}>
+              <IconButton sx={{
+                  width: '1.6em',
+                }}>
+                <Icon icon='majesticons:open' />
+              </IconButton>
+            </Link>
+          </Tooltip>
+
           <Tooltip title='Statistics' placement='top'>
             <Link href={`/event/statistics/${row.id}`}>
               <IconButton>
@@ -172,18 +182,22 @@ const EventListView = ({ data = { data: [] }, paginationModel, handleChangePage,
           </Tooltip>
 
           <Tooltip title='Edit' placement='top'>
-            <Link href={`/event/edit/${row.id}`}>
+            <Link target='_blank' href={`/event/edit/${row.id}`}>
               <IconButton>
                 <Icon icon='tabler:edit' />
               </IconButton>
             </Link>
           </Tooltip>
 
+
+
           <Tooltip title='Delete' placement='top'>
             <IconButton onClick={() => handleRemoveEvent(row.id)}>
               <Icon icon='tabler:trash' />
             </IconButton>
           </Tooltip>
+
+
         </Box>
       )
     }
@@ -213,7 +227,9 @@ const EventListView = ({ data = { data: [] }, paginationModel, handleChangePage,
           '& .MuiSvgIcon-root': {
             fontSize: '1.125rem',
           },
-
+          '& .MuiBox-root.css-12hr0br': {
+            display: 'none'
+          }
         }}
 
         slotProps={{
