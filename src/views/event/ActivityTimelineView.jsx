@@ -45,6 +45,7 @@ const ActivityTimelineView = ({endSignIn, endEvent, startEvent}) => {
   const getValueInTimeLine = (date) => {
     if(date > 0) return `In ${date} days`
     if(date < 0) return `${Math.abs(date)} days ago`
+
     return `Today`
   }
 
