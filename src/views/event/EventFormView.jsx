@@ -36,11 +36,11 @@ const EventFormView = ({eventId, inputRequired, handleClose}) => {
 
     instanceAxios.post(`/events/${eventId}/members`, data)
       .then((res) => {
-        toast.success('Form Submitted')
+        toast.success('Congratulations, you have successfully registered for the event!')
       })
       .catch((error) => {
         console.log(error)
-        toast.error('Form is not submitted')
+        toast.error('Something went wrong with the request, please try again later!')
       }).finally(() => {
         setLoading(false)
         handleClose()
@@ -62,44 +62,45 @@ const EventFormView = ({eventId, inputRequired, handleClose}) => {
         }}
       />
       <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={5}>
-            <Grid item xs={12}>
-              <Controller
-                name='name'
-                control={control}
-                rules={{required: true}}
-                render={({field: {value, onChange}}) => (
-                  <CustomTextField
-                    fullWidth
-                    value={value}
-                    label='Name'
-                    onChange={onChange}
-                    placeholder='Name'
-                    error={Boolean(errors.name)}
-                    {...(errors.name && {helperText: 'This field is required'})}
-                  />
-                )}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <Controller
-                name='surname'
-                control={control}
-                rules={{required: true}}
-                render={({field: {value, onChange}}) => (
-                  <CustomTextField
-                    fullWidth
-                    value={value}
-                    label='Surname'
-                    onChange={onChange}
-                    placeholder='Surname'
-                    error={Boolean(errors.surname)}
-                    {...(errors.surname && {helperText: 'This field is required'})}
-                  />
-                )}
-              />
-            </Grid>
+
+          {/*  <Grid item xs={12}>*/}
+          {/*    <Controller*/}
+          {/*      name='nameRequired'*/}
+          {/*      control={control}*/}
+          {/*      rules={{required: true}}*/}
+          {/*      render={({field: {value, onChange}}) => (*/}
+          {/*        <CustomTextField*/}
+          {/*          fullWidth*/}
+          {/*          value={value}*/}
+          {/*          label='Name'*/}
+          {/*          onChange={onChange}*/}
+          {/*          placeholder='Name'*/}
+          {/*          error={Boolean(errors.name)}*/}
+          {/*          {...(errors.name && {helperText: 'This field is required'})}*/}
+          {/*        />*/}
+          {/*      )}*/}
+          {/*    />*/}
+          {/*  </Grid>*/}
+          {/*  <Grid item xs={12}>*/}
+          {/*    <Controller*/}
+          {/*      name='surnameRequired'*/}
+          {/*      control={control}*/}
+          {/*      rules={{required: true}}*/}
+          {/*      render={({field: {value, onChange}}) => (*/}
+          {/*        <CustomTextField*/}
+          {/*          fullWidth*/}
+          {/*          value={value}*/}
+          {/*          label='Surname'*/}
+          {/*          onChange={onChange}*/}
+          {/*          placeholder='Surname'*/}
+          {/*          error={Boolean(errors.surname)}*/}
+          {/*          {...(errors.surname && {helperText: 'This field is required'})}*/}
+          {/*        />*/}
+          {/*      )}*/}
+          {/*    />*/}
+          {/*  </Grid>*/}
 
             {
               inputRequired.map(({

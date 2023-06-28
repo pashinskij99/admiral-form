@@ -207,7 +207,7 @@ const BasicEventForm = ({ userId }) => {
               }}>
                 All steps are completed!
                 <br />
-                Next, you need to log in or register
+                Next, you need to log in or register to receive a link to the event and track statistics.
               </Typography>
 
               <Box sx={{ mt: 4, display: 'flex', justifyContent: {xs: 'space-between', sm: 'flex-end'}, gap: 3 }}>

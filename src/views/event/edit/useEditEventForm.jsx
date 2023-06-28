@@ -37,7 +37,7 @@ export const useEditEventForm = ({
         }
         instanceAxios.patch(`/events/${currentFormInfo.id}`, finalData)
 
-        toast.success('Form Submitted')
+        toast.success('Congratulations, you have successfully changed the event!')
 
         setTimeout(() => {
           push('/event/list')
@@ -45,7 +45,7 @@ export const useEditEventForm = ({
       }
     } catch (e) {
       console.log(e.message)
-      toast.error('Form is not submitted!')
+      toast.error('Something went wrong with the request, please try again later!')
     }
   }
 

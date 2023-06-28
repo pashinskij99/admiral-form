@@ -68,7 +68,7 @@ const EventLinkPage = ({ userId }) => {
           console.log(error.config)
         })
         .then(res => {
-          toast.success('Form Created')
+          toast.success('Congratulations, you have successfully created an event!')
           setCreatedEventId(res.data.id)
           localStorage.setItem('lastEventId', res.data.id)
         })

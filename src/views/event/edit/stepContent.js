@@ -48,7 +48,7 @@ export const getStepContent = ({
               </Typography>
             </Grid>
 
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12} sm={6}>
               <Controller
                 name='name'
                 control={generalControl}
@@ -60,6 +60,22 @@ export const getStepContent = ({
                     label='Event Name*'
                     onChange={onChange}
                     placeholder='Event name'
+                  />
+                )}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Controller
+                name='location'
+                control={generalControl}
+                rules={{ required: false }}
+                render={({ field: { value, onChange } }) => (
+                  <CustomTextField
+                    fullWidth
+                    value={value}
+                    label='Location*'
+                    onChange={onChange}
+                    placeholder='Kyiv, Ukraine'
                   />
                 )}
               />
@@ -89,6 +105,7 @@ export const getStepContent = ({
                 control={generalControl}
                 render={({ field: { value, onChange } }) => (
                   <DatePicker
+                    dateFormat="dd/MM/yyyy"
                     selectsRange={true}
                     selected={startDate}
                     showYearDropdown
@@ -111,6 +128,7 @@ export const getStepContent = ({
                 control={generalControl}
                 render={({ field: { value, onChange } }) => (
                   <DatePicker
+                    dateFormat="dd/MM/yyyy"
                     selected={value}
                     showYearDropdown
                     showMonthDropdown
@@ -143,10 +161,7 @@ export const getStepContent = ({
               />
             </Grid>
 
-            <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Button variant='outlined' disabled>
-                Back
-              </Button>
+            <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
               <Button type='submit' variant='contained'>
                 Next
               </Button>
@@ -170,87 +185,90 @@ export const getStepContent = ({
               <Typography variant='body2' sx={{ fontWeight: 600, color: 'text.primary' }}>
                 User fields:
               </Typography>
-              <Controller
-                name='nameRequired'
-                control={specificControl}
-                render={({ field: { value, onChange } }) => (
-                  <FormControlLabel
-                    label='Name*'
-                    control={<Checkbox checked={value} value={value} onChange={e => onChange(e.target.checked)} />}
-                  />
-                )}
-              />
-              <Controller
-                name='surnameRequired'
-                control={specificControl}
-                render={({ field: { value, onChange } }) => (
-                  <FormControlLabel
-                    label='Last Name*'
-                    control={<Checkbox checked={value} value={value} onChange={e => onChange(e.target.checked)} />}
-                  />
-                )}
-              />
-              <Controller
-                name='emailRequired'
-                control={specificControl}
-                render={({ field: { value, onChange } }) => (
-                  <FormControlLabel
-                    label='Email'
-                    control={<Checkbox checked={value} value={value} onChange={e => onChange(e.target.checked)} />}
-                  />
-                )}
-              />
-              <Controller
-                name='telephoneRequired'
-                control={specificControl}
-                render={({ field: { value, onChange } }) => (
-                  <FormControlLabel
-                    label='Telephone number'
-                    control={<Checkbox checked={value} value={value} onChange={e => onChange(e.target.checked)} />}
-                  />
-                )}
-              />
+
+              <Grid>
+                <Controller
+                  name='nameRequired'
+                  control={specificControl}
+                  render={({ field: { value, onChange } }) => (
+                    <FormControlLabel
+                      label='Name*'
+                      control={<Checkbox checked={value} value={value} onChange={e => onChange(e.target.checked)} />}
+                    />
+                  )}
+                />
+                <Controller
+                  name='surnameRequired'
+                  control={specificControl}
+                  render={({ field: { value, onChange } }) => (
+                    <FormControlLabel
+                      label='Last Name*'
+                      control={<Checkbox checked={value} value={value} onChange={e => onChange(e.target.checked)} />}
+                    />
+                  )}
+                />
+                <Controller
+                  name='emailRequired'
+                  control={specificControl}
+                  render={({ field: { value, onChange } }) => (
+                    <FormControlLabel
+                      label='Email'
+                      control={<Checkbox checked={value} value={value} onChange={e => onChange(e.target.checked)} />}
+                    />
+                  )}
+                />
+                <Controller
+                  name='telephoneRequired'
+                  control={specificControl}
+                  render={({ field: { value, onChange } }) => (
+                    <FormControlLabel
+                      label='Telephone number'
+                      control={<Checkbox checked={value} value={value} onChange={e => onChange(e.target.checked)} />}
+                    />
+                  )}
+                />
+              </Grid>
             </Grid>
 
-            <Grid display={'flex'} mt={'5px'} flexDirection={'column'} item xs={12} sm={6}>
-              <Typography variant='body2' sx={{ fontWeight: 600, color: 'text.primary' }}>
-                Number of:
-              </Typography>
+            {/*<Grid display={'flex'} mt={'5px'} flexDirection={'column'} item xs={12} sm={6}>*/}
+            {/*  <Typography variant='body2' sx={{ fontWeight: 600, color: 'text.primary' }}>*/}
+            {/*    Number of:*/}
+            {/*  </Typography>*/}
 
-              <Controller
-                name='numberInvites'
-                control={specificControl}
-                rules={{ required: false }}
-                render={({ field: { value, onChange } }) => (
-                  <FormControlLabel
-                    label='Number of invites'
-                    control={<Checkbox checked={value} value={value} onChange={e => onChange(e.target.checked)} />}
-                  />
-                )}
-              />
-              <Controller
-                name='numberTickets'
-                control={specificControl}
-                rules={{ required: false }}
-                render={({ field: { value, onChange } }) => (
-                  <FormControlLabel
-                    label='Number of tickets'
-                    control={<Checkbox checked={value} value={value} onChange={e => onChange(e.target.checked)} />}
-                  />
-                )}
-              />
-              <Controller
-                name='numberPeople'
-                control={specificControl}
-                rules={{ required: false }}
-                render={({ field: { value, onChange } }) => (
-                  <FormControlLabel
-                    label='Number of people'
-                    control={<Checkbox checked={value} value={value} onChange={e => onChange(e.target.checked)} />}
-                  />
-                )}
-              />
-            </Grid>
+            {/*  <Controller*/}
+            {/*    name='numberInvites'*/}
+            {/*    control={specificControl}*/}
+            {/*    rules={{ required: false }}*/}
+            {/*    render={({ field: { value, onChange } }) => (*/}
+            {/*      <FormControlLabel*/}
+            {/*        label='Number of invites'*/}
+            {/*        control={<Checkbox checked={value} value={value} onChange={e => onChange(e.target.checked)} />}*/}
+            {/*      />*/}
+            {/*    )}*/}
+            {/*  />*/}
+            {/*  <Controller*/}
+            {/*    name='numberTickets'*/}
+            {/*    control={specificControl}*/}
+            {/*    rules={{ required: false }}*/}
+            {/*    render={({ field: { value, onChange } }) => (*/}
+            {/*      <FormControlLabel*/}
+            {/*        label='Number of tickets'*/}
+            {/*        control={<Checkbox checked={value} value={value} onChange={e => onChange(e.target.checked)} />}*/}
+            {/*      />*/}
+            {/*    )}*/}
+            {/*  />*/}
+            {/*  <Controller*/}
+            {/*    name='numberPeople'*/}
+            {/*    control={specificControl}*/}
+            {/*    rules={{ required: false }}*/}
+            {/*    render={({ field: { value, onChange } }) => (*/}
+            {/*      <FormControlLabel*/}
+            {/*        label='Number of people'*/}
+            {/*        control={<Checkbox checked={value} value={value} onChange={e => onChange(e.target.checked)} />}*/}
+            {/*      />*/}
+            {/*    )}*/}
+            {/*  />*/}
+            {/*</Grid>*/}
 
             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' }}>
               <Button variant='outlined' onClick={handleBack}>

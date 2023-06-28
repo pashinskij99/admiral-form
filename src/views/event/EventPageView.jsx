@@ -38,6 +38,9 @@ const EventPageView = ({
             about={data.about}
             contacts={data.contacts}
             overview={data.overview}
+            endSignIn={eventData.eventEndSignIn}
+            startEvent={eventData.eventStart}
+            endEvent={eventData.eventEnd}
           />
         </Grid>
       </Grid>

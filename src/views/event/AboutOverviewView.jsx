@@ -41,42 +41,17 @@ const renderList = arr => {
   }
 }
 
-const renderTeams = arr => {
-  if (arr && arr.length) {
-    return arr.map((item, index) => {
-      return (
-        <Box
-          key={index}
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            '&:not(:last-of-type)': { mb: 3 },
-            '& svg': { color: `${item.color}.main` }
-          }}
-        >
-          <Icon fontSize='1.25rem' icon={item.icon} />
-
-          <Typography sx={{ mx: 2, fontWeight: 500, color: 'text.secondary' }}>
-            {item.property.charAt(0).toUpperCase() + item.property.slice(1)}
-          </Typography>
-          <Typography sx={{ color: 'text.secondary' }}>
-            {item.value.charAt(0).toUpperCase() + item.value.slice(1)}
-          </Typography>
-        </Box>
-      )
-    })
-  } else {
-    return null
-  }
-}
-
 const AboutOverviewView = props => {
-  const {  about, contacts, overview } = props
+  const { about, contacts, overview, endSignIn, endEvent, startEvent } = props
 
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} md={8}>
-        <ActivityTimelineView/>
+        <ActivityTimelineView
+          endEvent={endEvent}
+          endSignIn={endSignIn}
+          startEvent={startEvent}
+        />
       </Grid>
 
       <Grid item xs={16} md={4}>

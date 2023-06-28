@@ -29,7 +29,25 @@ const Timeline = styled(MuiTimeline)({
   }
 })
 
-const ActivityTimelineView = () => {
+const ActivityTimelineView = ({endSignIn, endEvent, startEvent}) => {
+  const dateEndSignIn = new Date(endSignIn);
+  const dateStartEvent = new Date(startEvent);
+  const dateEndEvent = new Date(endEvent);
+
+  const differenceInTimeEventStart = dateStartEvent.getTime() - new Date().getTime();
+  const differenceInTimeEventEnd = dateEndEvent.getTime() - new Date().getTime();
+  const differenceInTimeEventSignIn = dateEndSignIn.getTime() - new Date().getTime();
+
+  const differenceInDaysEventStart = Math.ceil(differenceInTimeEventStart / (1000 * 3600 * 24));
+  const differenceInDaysEventEnd = Math.ceil(differenceInTimeEventEnd / (1000 * 3600 * 24));
+  const differenceInDaysEventSignIn = Math.ceil(differenceInTimeEventSignIn / (1000 * 3600 * 24));
+
+  const getValueInTimeLine = (date) => {
+    if(date > 0) return `In ${date} days`
+    if(date < 0) return `${Math.abs(date)} days ago`
+    return `Today`
+  }
+
   return (
     <Card>
       <CardHeader
@@ -40,31 +58,6 @@ const ActivityTimelineView = () => {
       />
       <CardContent>
         <Timeline>
-
-          <TimelineItem>
-            <TimelineSeparator>
-              <TimelineDot color='primary' />
-              <TimelineConnector />
-            </TimelineSeparator>
-            <TimelineContent sx={{ mt: 0 }}>
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  alignItems: 'center',
-                  justifyContent: 'space-between'
-                }}
-              >
-                <Typography variant='h6' sx={{ mr: 2 }}>
-                  Create Event
-                </Typography>
-                <Typography variant='caption' sx={{ color: 'text.disabled' }}>
-                  2 Days Ago
-                </Typography>
-              </Box>
-              <Typography variant='body2'>Event registered on our service</Typography>
-            </TimelineContent>
-          </TimelineItem>
 
           <TimelineItem>
             <TimelineSeparator>
@@ -84,7 +77,7 @@ const ActivityTimelineView = () => {
                   Event end sign in
                 </Typography>
                 <Typography variant='caption' sx={{ color: 'text.disabled' }}>
-                  In 5 days
+                  {getValueInTimeLine(differenceInDaysEventSignIn)}
                 </Typography>
               </Box>
               <Typography variant='body2' sx={{ mb: 3 }}>
@@ -113,7 +106,7 @@ const ActivityTimelineView = () => {
                   Start Event
                 </Typography>
                 <Typography variant='caption' sx={{ color: 'text.disabled' }}>
-                  In 6 days
+                  {getValueInTimeLine(differenceInDaysEventStart)}
                 </Typography>
               </Box>
               <Typography variant='body2' sx={{ mb: 3 }}>
@@ -140,7 +133,7 @@ const ActivityTimelineView = () => {
                   End event
                 </Typography>
                 <Typography variant='caption' sx={{ color: 'text.disabled' }}>
-                  In 12 days
+                  {getValueInTimeLine(differenceInDaysEventEnd)}
                 </Typography>
               </Box>
               <Typography variant='body2'>End this event</Typography>

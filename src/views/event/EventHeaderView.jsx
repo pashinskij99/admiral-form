@@ -91,17 +91,23 @@ const EventHeaderView = ({eventData, eventId, inputRequired}) => {
               </Box>
             </Box>
 
-            <Button onClick={handleOpen} variant='contained' sx={{ '& svg': { mr: 2 } }}>
-              {/* <Icon icon='tabler:check' fontSize='1.125rem' /> */}
-              Sign In
-            </Button>
+            {
+              inputRequired.length &&
+              ( <>
+                  <Button onClick={handleOpen} variant='contained' sx={{ '& svg': { mr: 2 } }}>
+                    {/* <Icon icon='tabler:check' fontSize='1.125rem' /> */}
+                    Sign In
+                  </Button>
+                  <SignInModal
+                    open={open}
+                    handleClose={handleClose}
+                    inputRequired={inputRequired}
+                    eventId={eventId}
+                  />
+                </>
+              )
+            }
 
-            <SignInModal
-              open={open}
-              handleClose={handleClose}
-              inputRequired={inputRequired}
-              eventId={eventId}
-            />
 
           </Box>
 
@@ -109,7 +115,7 @@ const EventHeaderView = ({eventData, eventId, inputRequired}) => {
 
         <Box sx={{ mb: 3, mt: 7 }}>
           <Typography ml={'0.5rem'} sx={{ color: 'text.secondary' }}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias architecto consequatur, facere facilis hic mollitia voluptas? Aliquam, architecto ea, eos facere fuga maiores maxime minima natus perferendis porro quo voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid architecto atque blanditiis culpa, cupiditate dolores ducimus esse excepturi facere harum, id, laudantium libero minima odit omnis saepe sapiente voluptatibus?
+            {eventData.description}
           </Typography>
 
         </Box>

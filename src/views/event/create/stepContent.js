@@ -124,6 +124,7 @@ export const getStepContent = ({
 
                 render={({ field: { value, onChange } }) => (
                   <DatePicker
+                    dateFormat="dd/MM/yyyy"
                     selectsRange={true}
                     selected={startDate}
                     showYearDropdown
@@ -162,6 +163,7 @@ export const getStepContent = ({
                 control={generalControl}
                 render={({ field: { value, onChange } }) => (
                   <DatePicker
+                    dateFormat="dd/MM/yyyy"
                     selected={value}
                     showYearDropdown
                     showMonthDropdown
@@ -218,10 +220,7 @@ export const getStepContent = ({
               />
             </Grid>
 
-            <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Button variant='outlined' disabled>
-                Back
-              </Button>
+            <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
               <Button type='submit' variant='contained'>
                 Next
               </Button>
@@ -245,13 +244,14 @@ export const getStepContent = ({
               <Typography variant='body2' sx={{ fontWeight: 600, color: 'text.primary' }}>
                 User fields:
               </Typography>
+              <Grid>
               <Controller
                 name='nameRequired'
                 control={specificControl}
-                rules={{ required: true }}
+                rules={{ required: false }}
                 render={({ field: { value, onChange } }) => (
                   <FormControlLabel
-                    label='Name*'
+                    label='Name'
                     control={<Checkbox checked={value} value={value} onChange={e => onChange(e.target.checked)} />}
                   />
                 )}
@@ -259,10 +259,10 @@ export const getStepContent = ({
               <Controller
                 name='surnameRequired'
                 control={specificControl}
-                rules={{ required: true }}
+                rules={{ required: false }}
                 render={({ field: { value, onChange } }) => (
                   <FormControlLabel
-                    label='Last Name*'
+                    label='Last Name'
                     control={<Checkbox checked={value} value={value} onChange={e => onChange(e.target.checked)} />}
                   />
                 )}
@@ -289,9 +289,12 @@ export const getStepContent = ({
                   />
                 )}
               />
+
+              </Grid>
+
             </Grid>
 
-            <Grid display={'flex'} mt={'5px'} flexDirection={'column'} item xs={12} sm={6}>
+            {/* <Grid display={'flex'} mt={'5px'} flexDirection={'column'} item xs={12} sm={6}>
               <Typography variant='body2' sx={{ fontWeight: 600, color: 'text.primary' }}>
                 Number of:
               </Typography>
@@ -329,7 +332,7 @@ export const getStepContent = ({
                   />
                 )}
               />
-            </Grid>
+            </Grid> */}
 
             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' }}>
               <Button variant='outlined' onClick={handleBack}>

@@ -52,7 +52,7 @@ export const useBasicEventForm = ({
           instanceAxios
             .post(`/users/${userId}/events`, finalData)
             .then(res => {
-              toast.success('Form Submitted')
+              toast.success('Congratulations, you have successfully created an event!')
               setCreatedEventId(res?.data?.id)
               setResponseError('')
             })
@@ -76,7 +76,7 @@ export const useBasicEventForm = ({
       }
     } catch (e) {
       console.log(e.message)
-      toast.error('Form is not submitted!')
+      toast.error('Something went wrong with the request, please try again later!')
     }
   }
 
