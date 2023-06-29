@@ -56,7 +56,6 @@ export const getServerSideProps = async (ctx) => {
 }
 
 const HomePage = ({id, userId, user}) => {
-
   return (
     <DatePickerWrapper>
       <Grid container spacing={6} className='match-height'>

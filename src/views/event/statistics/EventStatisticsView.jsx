@@ -104,6 +104,11 @@ const StatisticsForm = ({eventData}) => {
               >Link associated with the event form. You can be copied by just clicking/tapping</Typography>
               <Box position='relative'>
                 <CustomTextField
+                  sx={{
+                    'input': {
+                      padding: '7.5px 75px 7.5px 13px!important'
+                    }
+                  }}
                   fullWidth
                   value={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/event/${id}`}
                 />

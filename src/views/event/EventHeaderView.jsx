@@ -60,10 +60,10 @@ const EventHeaderView = ({eventData, eventId, inputRequired}) => {
               ml: 2,
               alignItems: 'flex-end',
               flexWrap: ['wrap', 'nowrap'],
-              justifyContent: ['center', 'space-between']
+              justifyContent: ['start', 'space-between']
             }}
           >
-            <Box sx={{ mb: [6, 0], display: 'flex', flexDirection: 'column', alignItems: ['center', 'flex-start'] }}>
+            <Box sx={{ mb: [0, 0], display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
               <Typography variant='h5' sx={{ mb: 2.5 }}>
                 {eventData.name}
               </Typography>
@@ -71,10 +71,17 @@ const EventHeaderView = ({eventData, eventId, inputRequired}) => {
                 sx={{
                   display: 'flex',
                   flexWrap: 'wrap',
-                  justifyContent: ['center', 'flex-start']
+                  justifyContent: ['center', 'flex-start'],
+                  flexDirection: ['column', 'row'],
+                  gap: ['10px', 0],
                 }}
               >
-                <Box sx={{ mr: 4, display: 'flex', alignItems: 'center', '& svg': { mr: 1.5, color: 'text.secondary' }}}>
+                <Box sx={{
+                  mr: 4,
+                  display: 'flex',
+                  alignItems: 'center',
+                  '& svg': { mr: 1.5, color: 'text.secondary' }
+                }}>
                   <Icon fontSize='1.25rem' icon='tabler:map-pin' />
                   <Typography sx={{ color: 'text.secondary' }}>Odessa, Ukraine</Typography>
                 </Box>
@@ -90,25 +97,16 @@ const EventHeaderView = ({eventData, eventId, inputRequired}) => {
                 </Box>
               </Box>
             </Box>
-
             {
-              inputRequired.length &&
-              ( <>
-                  <Button onClick={handleOpen} variant='contained' sx={{ '& svg': { mr: 2 } }}>
-                    {/* <Icon icon='tabler:check' fontSize='1.125rem' /> */}
-                    Sign In
-                  </Button>
-                  <SignInModal
-                    open={open}
-                    handleClose={handleClose}
-                    inputRequired={inputRequired}
-                    eventId={eventId}
-                  />
-                </>
-              )
+              inputRequired.length ?
+                ( <Box sx={{ display: {xs: 'none', sm: 'block'} }}>
+                    <Button onClick={handleOpen} variant='contained' sx={{ '& svg': { mr: 2 } }}>
+                      {/* <Icon icon='tabler:check' fontSize='1.125rem' /> */}
+                      Sign In
+                    </Button>
+                  </Box>
+                ) : null
             }
-
-
           </Box>
 
         </Box>
@@ -118,8 +116,25 @@ const EventHeaderView = ({eventData, eventId, inputRequired}) => {
             {eventData.description}
           </Typography>
 
+          {
+            inputRequired.length ?
+              ( <Box sx={{ display: {xs: 'block', sm: 'none'}, textAlign: 'end' }}>
+                  <Button onClick={handleOpen} variant='contained' sx={{ '& svg': { mr: 2 } }}>
+                    {/* <Icon icon='tabler:check' fontSize='1.125rem' /> */}
+                    Sign In
+                  </Button>
+
+                </Box>
+              ) : null
+          }
         </Box>
 
+        <SignInModal
+          open={open}
+          handleClose={handleClose}
+          inputRequired={inputRequired}
+          eventId={eventId}
+        />
       </CardContent>
     </Card>
   )

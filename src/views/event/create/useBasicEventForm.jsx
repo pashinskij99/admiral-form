@@ -29,7 +29,6 @@ export const useBasicEventForm = ({
   }
 
   const onSubmit = () => {
-
     try {
       setActiveStep(activeStep + 1)
       if (activeStep === steps.length - 1) {

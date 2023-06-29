@@ -181,12 +181,15 @@ export const getStepContent = ({
                 {steps[1].subtitle}
               </Typography>
             </Grid>
-            <Grid display={'flex'} mt={'5px'} flexDirection={'column'} item xs={12} sm={6}>
+            <Grid display={'flex'} mt={'5px'} flexDirection={'column'} item xs={12}>
               <Typography variant='body2' sx={{ fontWeight: 600, color: 'text.primary' }}>
                 User fields:
               </Typography>
 
-              <Grid>
+              <Grid sx={{
+                  display: {xs: 'grid', sm: 'flex'},
+                  gridTemplateColumns: '1fr',
+                }}>
                 <Controller
                   name='nameRequired'
                   control={specificControl}
@@ -294,7 +297,7 @@ export const getStepContent = ({
               </Typography>
             </Grid>
 
-            <Grid display={'flex'} mt={'5px'} flexDirection={'column'} item xs={12} sm={6}>
+            <Grid display={'flex'} mt={'5px'} flexDirection={'column'} item xs={6}>
               <Typography variant='body2' sx={{ fontWeight: 600, color: 'text.primary' }}>
                 Messengers:
               </Typography>
@@ -332,7 +335,7 @@ export const getStepContent = ({
               />
             </Grid>
 
-            <Grid display={'flex'} mt={'5px'} flexDirection={'column'} item xs={12} sm={6}>
+            <Grid display={'flex'} mt={'5px'} flexDirection={'column'} item xs={6}>
               <Typography variant='body2' sx={{ fontWeight: 600, color: 'text.primary' }}>
                 Social Media:
               </Typography>

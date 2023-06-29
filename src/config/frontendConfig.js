@@ -13,13 +13,13 @@ export const frontendConfig = () => {
         getRedirectionURL: async (context) => {
           if (context.action === "SUCCESS") {
             if (context.redirectToPath !== undefined) {
+              const newEvent = localStorage.getItem('newEvent')
+
               // we are navigating back to where the user was before they authenticated
-              return context.redirectToPath;
+              return newEvent ? '/event/link' : context.redirectToPath
             }
-            const newEvent = localStorage.getItem('newEvent')
-            if(newEvent) {
-              return "/event/link"
-            }
+
+            return '/'
           }
 
           return undefined

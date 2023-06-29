@@ -157,7 +157,7 @@ const EventListView = ({ data = { data: [] }, paginationModel, handleChangePage,
     ...defaultColumns,
     {
       flex: 0.1,
-      minWidth: 130,
+      minWidth: 180,
       sortable: false,
       field: 'actions',
       headerName: 'Actions',

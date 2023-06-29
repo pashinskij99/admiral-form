@@ -103,40 +103,40 @@ const VerticalNavHeader = props => {
               d='M7.77295 16.3566L23.6563 0H32V6.88383C32 6.88383 31.8262 9.17836 30.6591 10.4057L19.7824 22H13.6938L7.77295 16.3566Z'
             />
           </svg>
-          <HeaderTitle variant='h4' sx={{ ...menuCollapsedStyles, ...(navCollapsed && !navHover ? {} : { ml: 2.5 }) }}>
-            {themeConfig.templateName}
-          </HeaderTitle>
+          {/*<HeaderTitle variant='h4' sx={{ ...menuCollapsedStyles, ...(navCollapsed && !navHover ? {} : { ml: 2.5 }) }}>*/}
+          {/*  {themeConfig.templateName}*/}
+          {/*</HeaderTitle>*/}
         </LinkStyled>
       )}
 
-      {hidden ? (
-        <IconButton
-          disableRipple
-          disableFocusRipple
-          onClick={toggleNavVisibility}
-          sx={{ p: 0, color: 'text.secondary', backgroundColor: 'transparent !important' }}
-        >
-          <Icon icon='tabler:x' fontSize='1.25rem' />
-        </IconButton>
-      ) : userMenuLockedIcon === null && userMenuUnlockedIcon === null ? null : (
-        <IconButton
-          disableRipple
-          disableFocusRipple
-          onClick={() => saveSettings({ ...settings, navCollapsed: !navCollapsed })}
-          sx={{
-            p: 0,
-            color: 'text.primary',
-            backgroundColor: 'transparent !important',
-            '& svg': {
-              fontSize: '1.25rem',
-              ...menuCollapsedStyles,
-              transition: 'opacity .25s ease-in-out'
-            }
-          }}
-        >
-          {navCollapsed ? MenuUnlockedIcon() : MenuLockedIcon()}
-        </IconButton>
-      )}
+      {/*{hidden ? (*/}
+      {/*  <IconButton*/}
+      {/*    disableRipple*/}
+      {/*    disableFocusRipple*/}
+      {/*    onClick={toggleNavVisibility}*/}
+      {/*    sx={{ p: 0, color: 'text.secondary', backgroundColor: 'transparent !important' }}*/}
+      {/*  >*/}
+      {/*    <Icon icon='tabler:x' fontSize='1.25rem' />*/}
+      {/*  </IconButton>*/}
+      {/*) : userMenuLockedIcon === null && userMenuUnlockedIcon === null ? null : (*/}
+      {/*  <IconButton*/}
+      {/*    disableRipple*/}
+      {/*    disableFocusRipple*/}
+      {/*    onClick={() => saveSettings({ ...settings, navCollapsed: !navCollapsed })}*/}
+      {/*    sx={{*/}
+      {/*      p: 0,*/}
+      {/*      color: 'text.primary',*/}
+      {/*      backgroundColor: 'transparent !important',*/}
+      {/*      '& svg': {*/}
+      {/*        fontSize: '1.25rem',*/}
+      {/*        ...menuCollapsedStyles,*/}
+      {/*        transition: 'opacity .25s ease-in-out'*/}
+      {/*      }*/}
+      {/*    }}*/}
+      {/*  >*/}
+      {/*    {navCollapsed ? MenuUnlockedIcon() : MenuLockedIcon()}*/}
+      {/*  </IconButton>*/}
+      {/*)}*/}
     </MenuHeaderWrapper>
   )
 }

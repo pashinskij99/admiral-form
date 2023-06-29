@@ -100,10 +100,6 @@ const App = props => {
   const guestGuard = Component.guestGuard ?? false
   const aclAbilities = Component.acl ?? defaultACLObj
 
-  console.log({
-    appInfo
-  });
-
   return (
     <Provider store={store}>
 
