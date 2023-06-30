@@ -105,7 +105,7 @@ export const getStepContent = ({
                 control={generalControl}
                 render={({ field: { value, onChange } }) => (
                   <DatePicker
-                    dateFormat="dd/MM/yyyy"
+                    dateFormat="dd.MM.yyyy"
                     selectsRange={true}
                     selected={startDate}
                     showYearDropdown
@@ -128,7 +128,7 @@ export const getStepContent = ({
                 control={generalControl}
                 render={({ field: { value, onChange } }) => (
                   <DatePicker
-                    dateFormat="dd/MM/yyyy"
+                    dateFormat="dd.MM.yyyy"
                     selected={value}
                     showYearDropdown
                     showMonthDropdown
