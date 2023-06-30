@@ -4,7 +4,6 @@ import EventPageView from "../../views/event/EventPageView";
 import { useLayoutEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setAppBarState } from "../../store/apps/appBar";
-import { SessionAuth } from "supertokens-auth-react/recipe/session";
 
 export const getServerSideProps = async (ctx) => {
   const { id } = ctx.query

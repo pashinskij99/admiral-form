@@ -16,7 +16,7 @@ export const frontendConfig = () => {
               const newEvent = localStorage.getItem('newEvent')
 
               // we are navigating back to where the user was before they authenticated
-              return newEvent ? '/event/link' : context.redirectToPath
+              return newEvent ? '/event/link' : '/'
             }
 
             return '/'
@@ -26,6 +26,9 @@ export const frontendConfig = () => {
         },
         useShadowDom: false,
         style: `
+          *{
+            font-family: inherit;
+          }
           [data-supertokens~="row"] {
             display: flex;
             justify-content: space-evenly;
@@ -34,8 +37,9 @@ export const frontendConfig = () => {
           }
           [data-supertokens~="row"]:last-child svg * {
             stroke: #7367F0;
-            // background: #000;
-            // fill: #000;
+          }
+          [data-supertokens="inputAdornment inputAdornmentError"] svg * {
+            stroke: white!important
           }
           form {
             width: 100%;
@@ -57,15 +61,20 @@ export const frontendConfig = () => {
             padding: 7.5px 13px;
             color: rgba(47, 43, 61, 0.68);
             font-size: 0.9375rem;
-            transition: all 0.3s ease;
+            transition: all 0.3s ease-in-out;
+          }
+          [data-supertokens~="inputWrapper"] {
+            transition: all 0.3s ease-in-out;
+            outline: 1px solid rgb(224, 224, 224);
+            border: none;
           }
           [data-supertokens~="inputWrapper"]:focus-within {
             border: none;
             box-shadow: none;
-
+            outline: 1px solid #7367F0
           }
           [data-supertokens~="input"]:focus-within {
-            box-shadow: 0 0 0 0.1rem #7367F0;
+            // box-shadow: 0 0 0 0.12rem #7367F0;
           }
           [data-supertokens~="thirdPartyEmailPasswordDivider"] {
             width: 100%;
@@ -102,6 +111,7 @@ export const frontendConfig = () => {
             background-color: #7367F0;
             border: none;
             padding: 10px 20px;
+            // font-family: inherit;
           }
           [data-supertokens~="formRow"]:nth-child(4) {
 
@@ -117,6 +127,10 @@ export const frontendConfig = () => {
           }
           [data-supertokens~="superTokensBranding"] {
             display: none
+          }
+          [data-supertokens~="inputError"] {
+            box-shadow: none;
+            outline: 1px solid rgb(255, 23, 23);
           }
         `,
         signInAndUpFeature: {

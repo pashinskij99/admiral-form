@@ -72,7 +72,7 @@ const EventList = () => {
               </Typography>
             }
           />
-          <Link href={'/event/create'}>
+          <Link href={'/'}>
             <Button variant='contained' sx={{ '& svg': { mr: 2 } }}>
               <Icon icon='tabler:plus' />
               Add Event

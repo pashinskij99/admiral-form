@@ -12,12 +12,12 @@ import Typography from '@mui/material/Typography'
 // ** Third Party Imports
 
 // ** Icon Imports
-import { Modal } from "@mui/material"
+import { Modal } from '@mui/material'
 import Icon from 'src/@core/components/icon'
-import { formatDate } from "../../@core/utils/formatDate"
-import EventFormView from "./EventFormView"
+import { formatDate } from '../../@core/utils/formatDate'
+import EventFormView from './EventFormView'
 
-const EventHeaderView = ({eventData, eventId, inputRequired}) => {
+const EventHeaderView = ({ eventData, eventId, inputRequired }) => {
   // ** State
   const [open, setOpen] = useState(false)
 
@@ -42,7 +42,7 @@ const EventHeaderView = ({eventData, eventId, inputRequired}) => {
       <CardContent
         sx={{
           pt: 5,
-          mt: 0,
+          mt: 0
         }}
       >
         <Box
@@ -73,42 +73,35 @@ const EventHeaderView = ({eventData, eventId, inputRequired}) => {
                   flexWrap: 'wrap',
                   justifyContent: ['center', 'flex-start'],
                   flexDirection: ['column', 'row'],
-                  gap: ['10px', 0],
+                  gap: ['10px', 0]
                 }}
               >
-                <Box sx={{
-                  mr: 4,
-                  display: 'flex',
-                  alignItems: 'center',
-                  '& svg': { mr: 1.5, color: 'text.secondary' }
-                }}>
+                <Box
+                  sx={{
+                    mr: 4,
+                    display: 'flex',
+                    alignItems: 'center',
+                    '& svg': { mr: 1.5, color: 'text.secondary' }
+                  }}
+                >
                   <Icon fontSize='1.25rem' icon='tabler:map-pin' />
                   <Typography sx={{ color: 'text.secondary' }}>Odessa, Ukraine</Typography>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', '& svg': { mr: 1.5, color: 'text.secondary' } }}>
                   <Icon fontSize='1.25rem' icon='tabler:calendar' />
                   <Typography sx={{ color: 'text.secondary' }}>
-                    {formatDate(new Date(eventData.eventStart))}
-                    {' '}
-                    -
-                    {' '}
-                    {formatDate(new Date(eventData.eventEnd))}
-                    </Typography>
+                    {formatDate(new Date(eventData.eventStart))} - {formatDate(new Date(eventData.eventEnd))}
+                  </Typography>
                 </Box>
               </Box>
             </Box>
-            {
-              inputRequired.length ?
-                ( <Box sx={{ display: {xs: 'none', sm: 'block'} }}>
-                    <Button onClick={handleOpen} variant='contained' sx={{ '& svg': { mr: 2 } }}>
-                      {/* <Icon icon='tabler:check' fontSize='1.125rem' /> */}
-                      Sign In
-                    </Button>
-                  </Box>
-                ) : null
-            }
+              <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                <Button onClick={handleOpen} variant='contained' sx={{ '& svg': { mr: 2 } }}>
+                  {/* <Icon icon='tabler:check' fontSize='1.125rem' /> */}
+                  Sign In
+                </Button>
+              </Box>
           </Box>
-
         </Box>
 
         <Box sx={{ mb: 3, mt: 7 }}>
@@ -116,39 +109,28 @@ const EventHeaderView = ({eventData, eventId, inputRequired}) => {
             {eventData.description}
           </Typography>
 
-          {
-            inputRequired.length ?
-              ( <Box sx={{ display: {xs: 'block', sm: 'none'}, textAlign: 'end' }}>
-                  <Button onClick={handleOpen} variant='contained' sx={{ '& svg': { mr: 2 } }}>
-                    {/* <Icon icon='tabler:check' fontSize='1.125rem' /> */}
-                    Sign In
-                  </Button>
-
-                </Box>
-              ) : null
-          }
+          <Box sx={{ display: { xs: 'block', sm: 'none' }, textAlign: 'end' }}>
+            <Button onClick={handleOpen} variant='contained' sx={{ '& svg': { mr: 2 } }}>
+              {/* <Icon icon='tabler:check' fontSize='1.125rem' /> */}
+              Sign In
+            </Button>
+          </Box>
         </Box>
 
-        <SignInModal
-          open={open}
-          handleClose={handleClose}
-          inputRequired={inputRequired}
-          eventId={eventId}
-        />
+        <SignInModal open={open} handleClose={handleClose} inputRequired={inputRequired} eventId={eventId} />
       </CardContent>
     </Card>
   )
 }
 
-const SignInModal = ({open, handleClose, eventId, inputRequired}) => {
+const SignInModal = ({ open, handleClose, eventId, inputRequired }) => {
   return (
     <Modal
       open={open}
       onClose={handleClose}
-      sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}
-
+      sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
     >
-      <Box sx={{':focus-visible': {outline: 'none'}, maxWidth: '600px', p: {xs:5, md: 0} }}>
+      <Box sx={{ ':focus-visible': { outline: 'none' }, maxWidth: '600px', p: { xs: 5, md: 0 } }}>
         <EventFormView eventId={eventId} inputRequired={inputRequired} handleClose={handleClose} />
       </Box>
     </Modal>

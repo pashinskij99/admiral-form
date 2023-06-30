@@ -21,27 +21,29 @@ import { Box, Typography } from '@mui/material'
 import Icon from 'src/@core/components/icon'
 import { instanceAxios } from 'src/config/instanceAxios'
 
-const EventFormView = ({eventId, inputRequired, handleClose}) => {
+const EventFormView = ({ eventId, inputRequired, handleClose }) => {
   // ** Hooks
   const {
     control,
     handleSubmit,
-    formState: {errors}
+    formState: { errors }
   } = useForm()
 
   const [loading, setLoading] = useState(false)
 
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     setLoading(true)
 
-    instanceAxios.post(`/events/${eventId}/members`, data)
-      .then((res) => {
+    instanceAxios
+      .post(`/events/${eventId}/members`, data)
+      .then(res => {
         toast.success('Congratulations, you have successfully registered for the event!')
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error)
         toast.error('Something went wrong with the request, please try again later!')
-      }).finally(() => {
+      })
+      .finally(() => {
         setLoading(false)
         handleClose()
       })
@@ -54,8 +56,8 @@ const EventFormView = ({eventId, inputRequired, handleClose}) => {
           return (
             <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} px={'24px'} pt={'24px'}>
               <Typography variant='h4'>Sign up for the event</Typography>
-              <IconButton onClick={handleClose} sx={{':hover': {background: 'none'} }}>
-                <Icon icon='iconamoon:close-bold' style={{fontSize: '30px', color: 'rgba(47, 43, 61, 0.78)'}}/>
+              <IconButton onClick={handleClose} sx={{ ':hover': { background: 'none' } }}>
+                <Icon icon='iconamoon:close-bold' style={{ fontSize: '30px', color: 'rgba(47, 43, 61, 0.78)' }} />
               </IconButton>
             </Box>
           )
@@ -64,67 +66,62 @@ const EventFormView = ({eventId, inputRequired, handleClose}) => {
       <CardContent>
         <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={5}>
-
-          {/*  <Grid item xs={12}>*/}
-          {/*    <Controller*/}
-          {/*      name='nameRequired'*/}
-          {/*      control={control}*/}
-          {/*      rules={{required: true}}*/}
-          {/*      render={({field: {value, onChange}}) => (*/}
-          {/*        <CustomTextField*/}
-          {/*          fullWidth*/}
-          {/*          value={value}*/}
-          {/*          label='Name'*/}
-          {/*          onChange={onChange}*/}
-          {/*          placeholder='Name'*/}
-          {/*          error={Boolean(errors.name)}*/}
-          {/*          {...(errors.name && {helperText: 'This field is required'})}*/}
-          {/*        />*/}
-          {/*      )}*/}
-          {/*    />*/}
-          {/*  </Grid>*/}
-          {/*  <Grid item xs={12}>*/}
-          {/*    <Controller*/}
-          {/*      name='surnameRequired'*/}
-          {/*      control={control}*/}
-          {/*      rules={{required: true}}*/}
-          {/*      render={({field: {value, onChange}}) => (*/}
-          {/*        <CustomTextField*/}
-          {/*          fullWidth*/}
-          {/*          value={value}*/}
-          {/*          label='Surname'*/}
-          {/*          onChange={onChange}*/}
-          {/*          placeholder='Surname'*/}
-          {/*          error={Boolean(errors.surname)}*/}
-          {/*          {...(errors.surname && {helperText: 'This field is required'})}*/}
-          {/*        />*/}
-          {/*      )}*/}
-          {/*    />*/}
-          {/*  </Grid>*/}
-
-            {
-              inputRequired.map(({
-                                   id, name, type, label, placeholder, helperText
-                                 }) => (
-                <Grid key={id} item xs={12}>
-                  <Controller
-                    name={name}
-                    control={control}
-                    render={({field: {value, onChange}}) => (
-                      <CustomTextField
-                        fullWidth
-                        type={type}
-                        value={value}
-                        label={label}
-                        onChange={onChange}
-                        placeholder={placeholder}
-                      />
-                    )}
+            <Grid item xs={12}>
+              <Controller
+                name='nameRequired'
+                control={control}
+                rules={{ required: true }}
+                render={({ field: { value, onChange } }) => (
+                  <CustomTextField
+                    fullWidth
+                    value={value}
+                    label='Name'
+                    onChange={onChange}
+                    placeholder='Name'
+                    error={Boolean(errors.name)}
+                    {...(errors.name && { helperText: 'This field is required' })}
                   />
-                  {helperText && <Typography variant='caption'>{helperText}</Typography>}
-                </Grid>
-              ))
-            }
+                )}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Controller
+                name='surnameRequired'
+                control={control}
+                rules={{ required: true }}
+                render={({ field: { value, onChange } }) => (
+                  <CustomTextField
+                    fullWidth
+                    value={value}
+                    label='Surname'
+                    onChange={onChange}
+                    placeholder='Surname'
+                    error={Boolean(errors.surname)}
+                    {...(errors.surname && { helperText: 'This field is required' })}
+                  />
+                )}
+              />
+            </Grid>
+
+            {inputRequired.map(({ id, name, type, label, placeholder, helperText }) => (
+              <Grid key={id} item xs={12}>
+                <Controller
+                  name={name}
+                  control={control}
+                  render={({ field: { value, onChange } }) => (
+                    <CustomTextField
+                      fullWidth
+                      type={type}
+                      value={value}
+                      label={label}
+                      onChange={onChange}
+                      placeholder={placeholder}
+                    />
+                  )}
+                />
+                {helperText && <Typography variant='caption'>{helperText}</Typography>}
+              </Grid>
+            ))}
 
             <Grid item xs={12} textAlign={'right'}>
               <LoadingButton loading={loading} type='submit' variant='contained'>
